@@ -1,4 +1,4 @@
-package ar.cpfw.book.radio;
+package radio;
 
 import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 
