@@ -1,4 +1,4 @@
-package ar.cpfw.book.radio.ui;
+package radio.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,10 +18,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingWorker;
 import javax.swing.border.EmptyBorder;
 
-import ar.cpfw.book.radio.model.Competitor;
-import ar.cpfw.book.radio.model.RadioCompetition;
-import ar.cpfw.book.radio.model.RadioException;
-import ar.cpfw.book.radio.model.RadioProgram;
+import radio.model.Competitor;
+import radio.model.RadioCompetition;
+import radio.model.RadioException;
+import radio.model.RadioProgram;
 
 public class InscriptionView {
 

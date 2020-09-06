@@ -1,4 +1,4 @@
-package ar.cpfw.book.radio.persistence;
+package radio.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import ar.cpfw.book.radio.model.CompetitionRepository;
-import ar.cpfw.book.radio.model.RadioCompetition;
-import ar.cpfw.book.radio.model.RadioException;
+import radio.model.CompetitionRepository;
+import radio.model.RadioCompetition;
+import radio.model.RadioException;
 
 public class JdbcCompetitionRepository implements CompetitionRepository {
 

@@ -1,4 +1,4 @@
-package ar.cpfw.book.radio.ui;
+package radio.ui;
 
 public class Item {
 

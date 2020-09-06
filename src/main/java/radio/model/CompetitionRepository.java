@@ -1,4 +1,4 @@
-package ar.cpfw.book.radio.model;
+package radio.model;
 
 import java.util.List;
 import java.util.Optional;

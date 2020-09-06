@@ -1,10 +1,10 @@
-package ar.cpfw.book.main;
+package main;
 
 import javax.swing.SwingUtilities;
 
-import ar.cpfw.book.radio.model.DefaultRadioProgram;
-import ar.cpfw.book.radio.persistence.JdbcCompetitionRepository;
-import ar.cpfw.book.radio.ui.InscriptionView;
+import radio.model.DefaultRadioProgram;
+import radio.persistence.JdbcCompetitionRepository;
+import radio.ui.InscriptionView;
 
 public class Main {
 
