@@ -17,6 +17,6 @@ public class TestLayers {
     .whereLayer("UI").mayNotBeAccessedByAnyLayer()
     .whereLayer("BusinessLogic").mayOnlyBeAccessedByLayers("UI", "Persistence")
     .whereLayer("Persistence").mayNotBeAccessedByAnyLayer()
-    .check(new ClassFileImporter().importPackages("ar.cpfw.book.radio"));
+    .check(new ClassFileImporter().importPackages("radio"));
  }
 }
