@@ -1,0 +1,133 @@
+<!-- This is the ant build script to prove that logical design can be transformed 
+	to physical -->
+<project xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+	<target name="persistence-depedencies-to-lib-persistence-jars">
+		<path id="maven-ant-tasks.classpath"
+			path="lib/maven-ant-tasks-2.1.3.jar" />
+		<typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+			uri="antlib:org.apache.maven.artifact.ant"
+			classpathref="maven-ant-tasks.classpath" />
+
+		<artifact:pom file="pom.xml" id="maven.project" />
+	
+		<artifact:dependencies fileSetId="maven-ant-tasks.dependency.fileset">
+			<dependency groupId="org.apache.derby" artifactId="derbyclient" version="10.15.1.3"/>
+			<dependency groupId="org.apache.derby" artifactId="derbyshared" version="10.15.1.3"/>
+			<dependency groupId="org.apache.derby" artifactId="derbytools" version="10.15.1.3"/>
+			<dependency groupId="org.apache.derby" artifactId="derby" version="10.15.1.3"/>
+		</artifact:dependencies>
+
+		<delete dir="lib-persistence-jars" />
+		<mkdir dir="lib-persistence-jars" />
+		<copy todir="lib-persistence-jars">
+			<fileset refid="maven-ant-tasks.dependency.fileset"/>
+			<mapper type="flatten" />
+		</copy>
+	</target>
+
+	<target name="all-depedencies-to-lib-jars">
+		<path id="maven-ant-tasks.classpath"
+			path="lib/maven-ant-tasks-2.1.3.jar" />
+		<typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+			uri="antlib:org.apache.maven.artifact.ant"
+			classpathref="maven-ant-tasks.classpath" />
+
+		<artifact:pom file="pom.xml" id="maven.project" />
+	
+		<artifact:dependencies fileSetId="maven-ant-tasks.dependency.fileset">
+			<pom refid="maven.project" />
+		</artifact:dependencies>
+
+		<delete dir="all-lib-jars" />
+		<mkdir dir="all-lib-jars" />
+		<copy todir="all-lib-jars">
+			<fileset refid="maven-ant-tasks.dependency.fileset"/>
+			<mapper type="flatten" />
+		</copy>
+	</target>
+
+	<target name="clean">
+		<delete includeemptydirs="true">
+  			<fileset dir="physical-build" includes="**/*"/>
+		</delete>	
+	</target>
+
+	<!-- compiling application only -->
+
+	<target name="compile-ports">
+		<mkdir dir="physical-build/ports" />
+		<javac sourcepath="" srcdir="src/main/java"
+			destdir="physical-build/ports"
+			excludes="radio/model/*.java"
+			includes="radio/model/ports/*.java">
+		</javac>
+	</target>
+
+	<target name="jar-ports" depends="compile-ports">
+		<mkdir dir="physical-build/jar-ports"/>
+
+		<jar destfile="physical-build/jar-ports/ports.jar" 
+					basedir="physical-build/ports">
+		</jar>
+	</target>
+
+	<target name="compile-application" depends="jar-ports">
+		<mkdir dir="physical-build/classes-application" />
+
+		<javac sourcepath="" srcdir="src/main/java"
+			classpath="physical-build/jar-ports/ports.jar" 
+			destdir="physical-build/classes-application"
+			excludes="radio/model/ports/*.java" includes="radio/model/*.java">
+		</javac>
+	</target>
+
+	<target name="jar-application" depends="compile-application">
+		<mkdir dir="physical-build/jar-application"/>
+
+		<jar destfile="physical-build/jar-application/application.jar" 
+					basedir="physical-build/classes-application">
+		</jar>
+	</target>
+	
+	<!-- compile infrastructure only -->	
+	
+	<target name="compile-persistence" depends="jar-ports">
+
+		<mkdir dir="physical-build/classes-persistence" />
+		
+		<javac sourcepath="" 
+			classpath="physical-build/jar-ports/ports.jar" 
+			srcdir="src/main/java"
+			destdir="physical-build/classes-persistence"
+			includes="radio/persistence/*.java">
+		</javac>
+	</target>
+
+	<target name="jar-persistence" depends="compile-persistence">
+		<mkdir dir="physical-build/jar-persistence"/>
+
+		<jar destfile="physical-build/jar-persistence/persistence.jar" 
+					basedir="physical-build/classes-persistence">
+		</jar>
+	</target>
+
+	<target name="compile-ui" depends="jar-ports">
+		<mkdir dir="physical-build/classes-ui" />
+		<javac 
+			sourcepath="" srcdir="src/main/java"
+			classpath="physical-build/jar-ports/ports.jar" 
+			destdir="physical-build/classes-ui"
+			includes="radio/ui/**/*.java">
+		</javac>
+	</target>
+
+	<target name="jar-ui" depends="compile-ui">
+		<mkdir dir="physical-build/jar-ui"/>
+
+		<jar destfile="physical-build/jar-ui/ui.jar" 
+					basedir="physical-build/jar-ui">
+		</jar>
+	</target>
+
+</project>

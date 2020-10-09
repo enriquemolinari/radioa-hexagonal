@@ -1,5 +1,7 @@
 package radio.model;
 
+import radio.model.ports.Competitor;
+
 class DefaultCompetitor implements Competitor {
 
 	private String id;

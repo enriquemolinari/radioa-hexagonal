@@ -18,10 +18,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingWorker;
 import javax.swing.border.EmptyBorder;
 
-import radio.model.Competitor;
-import radio.model.RadioCompetition;
-import radio.model.RadioException;
-import radio.model.RadioProgram;
+import radio.model.ports.Competitor;
+import radio.model.ports.RadioCompetition;
+import radio.model.ports.RadioException;
+import radio.model.ports.RadioProgram;
 
 public class InscriptionView {
 

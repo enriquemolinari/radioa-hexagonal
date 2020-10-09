@@ -4,6 +4,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import radio.model.ports.CompetitionRepository;
+import radio.model.ports.Competitor;
+import radio.model.ports.RadioCompetition;
+import radio.model.ports.RadioException;
+import radio.model.ports.RadioProgram;
+
 public class DefaultRadioProgram implements RadioProgram {
 
 	private CompetitionRepository repository;

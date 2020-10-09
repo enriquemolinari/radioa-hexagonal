@@ -1,4 +1,4 @@
-package radio.model;
+package radio.model.ports;
 
 import java.time.LocalDateTime;
 

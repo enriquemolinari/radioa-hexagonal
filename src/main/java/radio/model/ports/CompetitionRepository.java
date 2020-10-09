@@ -1,4 +1,4 @@
-package radio.model;
+package radio.model.ports;
 
 import java.util.List;
 import java.util.Optional;

@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import radio.model.CompetitionRepository;
-import radio.model.RadioCompetition;
-import radio.model.RadioException;
+import radio.model.ports.CompetitionRepository;
+import radio.model.ports.RadioCompetition;
+import radio.model.ports.RadioException;
 
 public class JdbcCompetitionRepository implements CompetitionRepository {
 
