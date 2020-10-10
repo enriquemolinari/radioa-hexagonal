@@ -90,7 +90,7 @@
 		</jar>
 	</target>
 	
-	<!-- compile infrastructure only -->	
+	<!-- compile infrastructure depending on ports only -->	
 	
 	<target name="compile-persistence" depends="jar-ports">
 
