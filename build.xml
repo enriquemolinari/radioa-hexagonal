@@ -100,7 +100,7 @@
 			classpath="physical-build/jar-ports/ports.jar" 
 			srcdir="src/main/java"
 			destdir="physical-build/classes-persistence"
-			includes="radio/persistence/*.java">
+			includes="radio/adapter/persistence/*.java">
 		</javac>
 	</target>
 
@@ -118,7 +118,7 @@
 			sourcepath="" srcdir="src/main/java"
 			classpath="physical-build/jar-ports/ports.jar" 
 			destdir="physical-build/classes-ui"
-			includes="radio/ui/**/*.java">
+			includes="radio/adapter/ui/**/*.java">
 		</javac>
 	</target>
 
