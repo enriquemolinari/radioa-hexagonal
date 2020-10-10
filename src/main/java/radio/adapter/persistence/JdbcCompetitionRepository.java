@@ -1,4 +1,4 @@
-package radio.persistence;
+package radio.adapter.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

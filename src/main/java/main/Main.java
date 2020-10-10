@@ -2,9 +2,9 @@ package main;
 
 import javax.swing.SwingUtilities;
 
+import radio.adapter.persistence.JdbcCompetitionRepository;
+import radio.adapter.ui.InscriptionView;
 import radio.model.DefaultRadioProgram;
-import radio.persistence.JdbcCompetitionRepository;
-import radio.ui.InscriptionView;
 
 public class Main {
 

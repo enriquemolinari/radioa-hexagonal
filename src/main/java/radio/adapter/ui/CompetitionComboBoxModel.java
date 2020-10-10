@@ -1,4 +1,4 @@
-package radio.ui;
+package radio.adapter.ui;
 
 import javax.swing.DefaultComboBoxModel;
 
